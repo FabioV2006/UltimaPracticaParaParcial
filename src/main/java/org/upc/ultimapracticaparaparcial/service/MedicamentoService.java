@@ -16,23 +16,44 @@ public class MedicamentoService {
         this.medicamentoRepository = medicamentoRepository;
         this.modelMapper = modelMapper;
     }
+//    public MedicamentoDTO actualizarMedicamento(MedicamentoDTO medicamentoDTO) {
+//
+//        //Implementamos las validaciones
+//        if(medicamentoDTO.getId() == null)
+//        {
+//            throw new IllegalArgumentException("Id invalido");
+//        }
+//        Medicamento medicamentoExistente = medicamentoRepository.findById(medicamentoDTO.getId()).orElseThrow(() ->
+//                new IllegalArgumentException("Medicamento no encontrado con id" +  medicamentoDTO.getId()));
+//
+//        modelMapper.map(medicamentoDTO, medicamentoExistente);
+//
+//        Medicamento medicamentoActualizado = medicamentoRepository.save(medicamentoExistente);
+//        return modelMapper.map(medicamentoActualizado, MedicamentoDTO.class);
+//
+//
+//    }
     public MedicamentoDTO actualizarMedicamento(MedicamentoDTO medicamentoDTO) {
-
-        //Implementamos las validaciones
-        if(medicamentoDTO.getId() == null)
-        {
-            throw new IllegalArgumentException("Id invalido");
+        // --- VALIDACIONES ---
+        if (medicamentoDTO.getId() == null) {
+            // El examen pide que el ID sea obligatorio.
+            throw new IllegalArgumentException("El ID del medicamento es obligatorio para actualizar.");
         }
-        Medicamento medicamentoExistente = medicamentoRepository.findById(medicamentoDTO.getId()).orElseThrow(() ->
-                new IllegalArgumentException("Medicamento no encontrado con id" +  medicamentoDTO.getId()));
+        // El examen pide 3 campos obligatorios para actualizar.
+        if (medicamentoDTO.getNombre() == null || medicamentoDTO.getNombre().trim().isEmpty() ||
+                medicamentoDTO.getPrincipioActivo() == null || medicamentoDTO.getPrincipioActivo().trim().isEmpty() ||
+                medicamentoDTO.getPrecio() == null) {
+            throw new IllegalArgumentException("Los campos nombre, principioActivo y precio son obligatorios.");
+        }
+
+        Medicamento medicamentoExistente = medicamentoRepository.findById(medicamentoDTO.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Medicamento no encontrado con id " + medicamentoDTO.getId()));
 
         modelMapper.map(medicamentoDTO, medicamentoExistente);
-
         Medicamento medicamentoActualizado = medicamentoRepository.save(medicamentoExistente);
         return modelMapper.map(medicamentoActualizado, MedicamentoDTO.class);
-
-
     }
+
     public MedicamentoDTO registrarMedicamento(MedicamentoDTO medicamentoDTO) {
         if(medicamentoDTO.getId() != null)
         {

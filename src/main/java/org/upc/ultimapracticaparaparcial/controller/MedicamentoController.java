@@ -19,13 +19,31 @@ public class MedicamentoController {
         this.medicamentoService = medicamentoService;
     }
 
+//    @PreAuthorize("hasRole('FARMACIA')")
+//    @PutMapping("/{id}")
+//    public ResponseEntity<MedicamentoDTO> actualizarMedicamento(@PathVariable Long id, @RequestBody MedicamentoDTO medicamentoDTO) {
+//        // Asegúrate que el servicio recibe el ID por separado
+//        medicamentoDTO.setId(id); // O modifica el servicio para recibir 2 parámetros
+//        MedicamentoDTO medicamentoActualizado = medicamentoService.actualizarMedicamento(medicamentoDTO);
+//        return ResponseEntity.ok(medicamentoActualizado);
+//    }
+// --- HU02: ACTUALIZAR MEDICAMENTO CON MANEJO DE ERROR LOCAL ---
     @PreAuthorize("hasRole('FARMACIA')")
     @PutMapping("/{id}")
-    public ResponseEntity<MedicamentoDTO> actualizarMedicamento(@PathVariable Long id, @RequestBody MedicamentoDTO medicamentoDTO) {
-        // Asegúrate que el servicio recibe el ID por separado
-        medicamentoDTO.setId(id); // O modifica el servicio para recibir 2 parámetros
-        MedicamentoDTO medicamentoActualizado = medicamentoService.actualizarMedicamento(medicamentoDTO);
-        return ResponseEntity.ok(medicamentoActualizado);
+    public ResponseEntity<?> actualizarMedicamento(@PathVariable Long id, @RequestBody MedicamentoDTO medicamentoDTO) {
+        try {
+            medicamentoDTO.setId(id);
+            MedicamentoDTO medicamentoActualizado = medicamentoService.actualizarMedicamento(medicamentoDTO);
+            return ResponseEntity.ok(medicamentoActualizado); // Respuesta 200 OK si todo va bien
+
+        } catch (IllegalArgumentException ex) {
+            // Si el servicio lanza la excepción que definimos (porque un campo es nulo,
+            // o el ID no existe), la capturamos aquí.
+
+            // Devolvemos el mensaje de la excepción y el código HTTP 406 Not Acceptable,
+            // cumpliendo EXACTAMENTE con el requisito del examen.
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @PostMapping
