@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.upc.apivvreynaldo.security.entities.Role;
-import org.upc.apivvreynaldo.security.entities.User;
-import org.upc.apivvreynaldo.security.services.UserService;
+import org.upc.ultimapracticaparaparcial.security.entities.Role;
+import org.upc.ultimapracticaparaparcial.security.entities.User;
+import org.upc.ultimapracticaparaparcial.security.services.UserService;
 
 //@CrossOrigin(origins = "${ip.frontend}")
 @CrossOrigin(origins = "${ip.frontend}", allowCredentials = "true", exposedHeaders = "Authorization") //para cloud

@@ -9,10 +9,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import org.upc.apivvreynaldo.security.dtos.AuthRequestDTO;
-import org.upc.apivvreynaldo.security.dtos.AuthResponseDTO;
-import org.upc.apivvreynaldo.security.services.CustomUserDetailsService;
-import org.upc.apivvreynaldo.security.util.JwtUtil;
+import org.upc.ultimapracticaparaparcial.security.dtos.AuthRequestDTO;
+import org.upc.ultimapracticaparaparcial.security.dtos.AuthResponseDTO;
+import org.upc.ultimapracticaparaparcial.security.services.CustomUserDetailsService;
+import org.upc.ultimapracticaparaparcial.security.util.JwtUtil;
 
 import java.util.Set;
 import java.util.stream.Collectors;

@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.upc.apivvreynaldo.security.entities.User;
-import org.upc.apivvreynaldo.security.repositories.UserRepository;
+import org.upc.ultimapracticaparaparcial.security.entities.User;
+import org.upc.ultimapracticaparaparcial.security.repositories.UserRepository;
 
 import java.util.Set;
 import java.util.stream.Collectors;

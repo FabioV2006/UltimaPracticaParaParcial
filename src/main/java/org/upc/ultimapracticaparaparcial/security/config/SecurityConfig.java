@@ -13,8 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.upc.apivvreynaldo.security.filters.JwtRequestFilter;
-import org.upc.apivvreynaldo.security.services.CustomUserDetailsService;
+import org.upc.ultimapracticaparaparcial.security.filters.JwtRequestFilter;
+import org.upc.ultimapracticaparaparcial.security.services.CustomUserDetailsService;
 
 
 @Configuration

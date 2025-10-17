@@ -36,10 +36,11 @@ public class MedicamentoController {
         return new ResponseEntity<>(mensaje, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}") // ← FALTABA EL {id} EN EL MAPPING
+    // --- CORRECCIÓN EN EL MÉTODO DELETE ---
+    @DeleteMapping("/{id}") // <-- FALTABA EL {id} PARA CAPTURAR LA VARIABLE DE LA URL
     @PreAuthorize("hasRole('FARMACIA')")
-    public ResponseEntity<Void> eliminarMedicamento(@PathVariable Long id) { // ← Quitar @Valid aquí
+    public ResponseEntity<Void> eliminarMedicamento(@PathVariable Long id) { // <-- QUITAR @Valid, no aplica a un tipo simple como Long
         medicamentoService.eliminarMedicamento(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // noContent() es el estándar para un DELETE exitoso.
     }
 }

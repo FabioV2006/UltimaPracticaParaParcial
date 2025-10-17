@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.upc.apivvreynaldo.security.services.CustomUserDetailsService;
-import org.upc.apivvreynaldo.security.util.JwtUtil;
+import org.upc.ultimapracticaparaparcial.security.services.CustomUserDetailsService;
+import org.upc.ultimapracticaparaparcial.security.util.JwtUtil;
 
 import java.io.IOException;
 /*

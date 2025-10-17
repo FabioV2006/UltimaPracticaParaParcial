@@ -4,10 +4,10 @@ package org.upc.ultimapracticaparaparcial.security.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.upc.apivvreynaldo.security.entities.Role;
-import org.upc.apivvreynaldo.security.entities.User;
-import org.upc.apivvreynaldo.security.repositories.RoleRepository;
-import org.upc.apivvreynaldo.security.repositories.UserRepository;
+import org.upc.ultimapracticaparaparcial.security.entities.Role;
+import org.upc.ultimapracticaparaparcial.security.entities.User;
+import org.upc.ultimapracticaparaparcial.security.repositories.RoleRepository;
+import org.upc.ultimapracticaparaparcial.security.repositories.UserRepository;
 
 @Service
 public class UserService {
